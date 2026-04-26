@@ -1,0 +1,9 @@
+bin/
+.env
+.DS_Store
+.gocache/
+.golangci-lint-cache/
+.gomodcache/
+*.log
+coverage.out
+node_modules/

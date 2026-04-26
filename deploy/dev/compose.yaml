@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: kernelscope-postgres
+    environment:
+      POSTGRES_USER: kernelscope
+      POSTGRES_PASSWORD: kernelscope
+      POSTGRES_DB: kernelscope
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.8
+    container_name: kernelscope-clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+
+  redis:
+    image: redis:7
+    container_name: kernelscope-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  clickhouse_data:
+  redis_data:
